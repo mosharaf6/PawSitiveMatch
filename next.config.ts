@@ -33,6 +33,14 @@ const nextConfig: NextConfig = {
   },
   webpack: (config) => {
     config.externals.push('pino-pretty', 'lokijs', 'encoding', 'handlebars');
+    // Add more exclusions for genkit dependencies
+    config.externals.push(
+      '@grpc/grpc-js',
+      '@opentelemetry/exporter-jaeger',
+      '@opentelemetry/exporter-trace-otlp-grpc',
+      '@opentelemetry/sdk-node',
+      'dns'
+    );
     return config;
   },
 };

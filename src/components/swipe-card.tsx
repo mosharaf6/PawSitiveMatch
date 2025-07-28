@@ -54,22 +54,22 @@ const SwipeCard = ({ pet, onSwipe, isTop }: SwipeCardProps) => {
   const nopeOpacity = useTransform(x, [-100, 0], [1, 0]);
 
   return (
-    <motion.div
-      {...(isTop ? bind() : {})}
-      className="absolute w-full h-full"
-      style={{
-        x: xSpring,
-        y: ySpring,
-        rotate,
-        scale: isTop ? scale : 1, // only scale the top card
-        touchAction: 'none',
-      }}
-      animate={{
-         y: isTop ? 0 : -30,
-         scale: isTop ? 1 : 0.9,
-         transition: { type: 'spring', stiffness: 200, damping: 20 }
-      }}
-    >
+    <div {...(isTop ? bind() : {})} className="absolute w-full h-full">
+      <motion.div
+        className="relative w-full h-full"
+        style={{
+          x: xSpring,
+          y: ySpring,
+          rotate,
+          scale: isTop ? scale : 1, // only scale the top card
+          touchAction: 'none',
+        }}
+        animate={{
+          y: isTop ? 0 : -30,
+          scale: isTop ? 1 : 0.9,
+          transition: { type: 'spring', stiffness: 200, damping: 20 }
+        }}
+      >
       <div className={`relative w-full h-full rounded-2xl shadow-2xl bg-card overflow-hidden ${isTop ? 'cursor-grab active:cursor-grabbing' : ''}`}>
         <Image
           src={pet.photos[0]}
@@ -109,7 +109,8 @@ const SwipeCard = ({ pet, onSwipe, isTop }: SwipeCardProps) => {
           </div>
         </div>
       </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 };
 

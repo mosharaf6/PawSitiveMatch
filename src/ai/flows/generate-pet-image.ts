@@ -42,6 +42,10 @@ const generatePetImageFlow = ai.defineFlow(
         },
     });
 
+    if (!media) {
+        throw new Error('Image generation failed to produce media.');
+    }
+    
     const imageUrl = media.url;
     if (!imageUrl) {
         throw new Error('Image generation failed to produce an image.');
