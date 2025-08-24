@@ -5,23 +5,21 @@ import { cn } from '@/lib/utils';
 import { Toaster } from '@/components/ui/toaster';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
-import { Alegreya, Inter } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 import { AnimatePresence, motion } from 'framer-motion';
 import BottomNav from '@/components/layout/bottom-nav';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
-const alegreya = Alegreya({ 
-  subsets: ['latin'], 
+// Use fallback fonts for build environment
+const alegreya = {
   variable: '--font-serif',
-  display: 'swap',
-});
+  className: '',
+};
 
-const inter = Inter({
-  subsets: ['latin'],
+const inter = {
   variable: '--font-sans',
-  display: 'swap',
-});
+  className: '',
+};
 
 export const metadata: Metadata = {
   title: 'PawsitiveMatch | Find Your Perfect Pet Companion',
